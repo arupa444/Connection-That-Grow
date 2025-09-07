@@ -176,25 +176,25 @@ def download_excel(request: Request):
 
 # ---------------- Admin: change password (optional) ----------------
 @app.get("/change-password")
-def change_password_page(request: Request):
+def changePassword_page(request: Request):
     if get_current_user(request) is None:
         return RedirectResponse("/login?next=/change-password", status_code=303)
-    return templates.TemplateResponse("change_password.html", {"request": request, "user": get_current_user(request), "error": None, "success": None})
+    return templates.TemplateResponse("changePassword.html", {"request": request, "user": get_current_user(request), "error": None, "success": None})
 
 @app.post("/change-password")
-def change_password(request: Request, current: str = Form(...), new_password: str = Form(...), confirm: str = Form(...)):
+def changePassword(request: Request, current: str = Form(...), new_password: str = Form(...), confirm: str = Form(...)):
     username = get_current_user(request)
     if username is None:
         return RedirectResponse("/login?next=/change-password", status_code=303)
     users = load_users()
     stored = users.get(username)
     if not stored or not verify_password(current, stored):
-        return templates.TemplateResponse("change_password.html", {"request": request, "user": username, "error": "Current password incorrect", "success": None})
+        return templates.TemplateResponse("changePassword.html", {"request": request, "user": username, "error": "Current password incorrect", "success": None})
     if new_password != confirm:
-        return templates.TemplateResponse("change_password.html", {"request": request, "user": username, "error": "Passwords do not match", "success": None})
+        return templates.TemplateResponse("changePassword.html", {"request": request, "user": username, "error": "Passwords do not match", "success": None})
     users[username] = hash_password(new_password)
     save_users(users)
-    return templates.TemplateResponse("change_password.html", {"request": request, "user": username, "error": None, "success": "Password updated"})
+    return templates.TemplateResponse("changePassword.html", {"request": request, "user": username, "error": None, "success": "Password updated"})
 
 # create default users file (if needed) at startup
 ensure_users_file()
