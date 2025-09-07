@@ -1,9 +1,58 @@
 body {
   font-family: "Segoe UI", sans-serif;
+  transition: background 0.5s, color 0.5s;
 }
+
 h2 {
   margin-bottom: 20px;
 }
 .navbar-text {
+  color: #fff;
+}
+
+/* Light Mode */
+.light-mode {
+  background: #f8f9fa;
+  color: #212529;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background: #121212;
+  color: #eaeaea;
+}
+.dark-mode .navbar {
+  background: #1c1c1c !important;
+}
+.dark-mode .table {
+  color: #eaeaea;
+}
+.dark-mode a {
+  color: #66b3ff;
+}
+
+/* Astro Mode 🌌 */
+.astro-mode {
+  background: radial-gradient(ellipse at top, #1a0028, #000000 80%);
+  color: #f0eaff;
+  background-attachment: fixed;
+}
+.astro-mode .navbar {
+  background: linear-gradient(90deg, #3a0ca3, #7209b7, #4361ee) !important;
+}
+.astro-mode a {
+  color: #ff9eec;
+  text-shadow: 0 0 8px #ff6fff;
+}
+.astro-mode h2 {
+  text-shadow: 0 0 10px #9d4edd, 0 0 20px #7209b7;
+}
+.astro-mode .btn {
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+.astro-mode .table {
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
   color: #fff;
 }
