@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Connection</h2>
+<form method="post">
+  <div class="mb-3"><label>Name</label><input class="form-control" name="name" value="{{ record['Name'] }}" required></div>
+  <div class="mb-3"><label>Company</label><input class="form-control" name="company" value="{{ record['Company'] }}" required></div>
+  <div class="mb-3"><label>Connection Link</label><input class="form-control" name="connection_link" value="{{ record['Connection Link'] }}" required></div>
+  <div class="mb-3"><label>Email</label><input class="form-control" type="email" name="email" value="{{ record['Email'] }}" required></div>
+  <div class="mb-3"><label>Phone No.</label><input class="form-control" name="phone" value="{{ record['Phone No.'] }}"></div>
+  <div class="mb-3"><label>Role</label><input class="form-control" name="role" value="{{ record['Role'] }}" required></div>
+  <button class="btn btn-primary">Update</button>
+  <a href="/" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

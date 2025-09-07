@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConnectionDB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body id="theme-body">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">📒 ConnectionDB</a>
+
+    <div class="ms-auto d-flex align-items-center">
+      <!-- Theme Switcher -->
+      <div class="dropdown me-3">
+        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          🎨 Theme
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item theme-option" data-theme="light">☀️ Light</a></li>
+          <li><a class="dropdown-item theme-option" data-theme="dark">🌙 Dark</a></li>
+          <li><a class="dropdown-item theme-option" data-theme="astro">✨ Astro</a></li>
+        </ul>
+      </div>
+
+      {% if user %}
+        <span class="navbar-text me-2">Signed in as <strong>{{ user }}</strong></span>
+        <a class="btn btn-sm btn-outline-light me-2" href="/change-password">Change password</a>
+        <a class="btn btn-sm btn-success me-2" href="/add">➕ Add</a>
+        <a class="btn btn-sm btn-warning me-2" href="/download">⬇️ Download</a>
+        <a class="btn btn-sm btn-outline-danger" href="/logout">Logout</a>
+      {% else %}
+        <a class="btn btn-sm btn-success me-2" href="/login">Login</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+    {% block content %}{% endblock %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/static/theme.js"></script>   <!-- external JS -->
+</body>
+</html>

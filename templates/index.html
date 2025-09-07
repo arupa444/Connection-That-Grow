@@ -1,0 +1,42 @@
+{% extends "universalLayout.html" %}
+{% block content %}
+<h2>All Connections</h2>
+
+<form class="d-flex mb-3" method="get">
+  <input class="form-control me-2" type="search" placeholder="Search (name, company, email, role...)" name="q" value="{{ query or '' }}">
+  <button class="btn btn-outline-primary">Search</button>
+</form>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th><th>Company</th><th>Connection Link</th><th>Email</th><th>Phone No.</th><th>Role</th><th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for r in records %}
+    <tr>
+      <td>{{ r["Name"] }}</td>
+      <td>{{ r["Company"] }}</td>
+      <td>
+        {% if r['Connection Link'] %}
+            <a href="{{ r['Connection Link'] }}" target="_blank">Link</a>
+        {% else %}
+            -
+        {% endif %}
+      </td>
+      <td>{{ r["Email"] }}</td>
+      <td>{{ r["Phone No."] or '-' }}</td>
+      <td>{{ r["Role"] }}</td>
+      <td>
+        {% if user %}
+          <a class="btn btn-sm btn-primary" href="/update/{{ loop.index0 }}">Edit</a>
+        {% else %}
+          <a class="btn btn-sm btn-outline-secondary" href="/login?next=/update/{{ loop.index0 }}">Login to edit</a>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

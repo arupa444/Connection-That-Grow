@@ -1,0 +1,17 @@
+{% extends "universalLayout.html" %}
+{% block content %}
+<h2>Add New Connection</h2>
+{% if error %}
+  <div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+<form method="post">
+  <div class="mb-3"><label>Name</label><input class="form-control" name="name" required></div>
+  <div class="mb-3"><label>Company</label><input class="form-control" name="company" required></div>
+  <div class="mb-3"><label>Connection Link</label><input class="form-control" name="connection_link" required></div>
+  <div class="mb-3"><label>Email</label><input class="form-control" type="email" name="email" required></div>
+  <div class="mb-3"><label>Phone No.</label><input class="form-control" name="phone"></div>
+  <div class="mb-3"><label>Role</label><input class="form-control" name="role" required></div>
+  <button class="btn btn-success">Save</button>
+  <a href="/" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
