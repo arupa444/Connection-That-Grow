@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h2>Login</h2>
+{% if error %}
+  <div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+<form method="post">
+  <input type="hidden" name="next" value="{{ next }}">
+  <div class="mb-3"><label>Username</label><input class="form-control" name="username" required></div>
+  <div class="mb-3"><label>Password</label><input class="form-control" type="password" name="password" required></div>
+  <button class="btn btn-primary">Login</button>
+  <a class="btn btn-secondary" href="/">Cancel</a>
+</form>
+{% endblock %}
